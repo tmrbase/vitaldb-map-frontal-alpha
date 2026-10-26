@@ -1,0 +1,106 @@
+project:
+  name: vitaldb_map_ra_bja
+  random_seed: 42
+
+paths:
+  data_root: data/vitaldb
+  output_root: outputs
+
+cohort:
+  adult_age: 18
+  primary_ane_type: General
+
+tracks:
+  eeg1: BIS/EEG1_WAV
+  sqi: BIS/SQI
+  sr: BIS/SR
+  art_map: Solar8000/ART_MBP
+  etco2:
+    - Solar8000/ETCO2
+    - Primus/ETCO2
+  body_temperature: Solar8000/BT
+  ppf_rate: Orchestra/PPF20_RATE
+  ppf_vol: Orchestra/PPF20_VOL
+  ppf_ce: Orchestra/PPF20_CE
+  rftn20_rate: Orchestra/RFTN20_RATE
+  rftn50_rate: Orchestra/RFTN50_RATE
+  rftn20_vol: Orchestra/RFTN20_VOL
+  rftn50_vol: Orchestra/RFTN50_VOL
+  rftn20_ce: Orchestra/RFTN20_CE
+  rftn50_ce: Orchestra/RFTN50_CE
+  inhaled_expired:
+    - Primus/EXP_SEVO
+    - Primus/EXP_DES
+    - Solar8000/GAS2_EXPIRED
+
+signal:
+  filter_order: 4
+  primary_band_hz: [0.5, 30.0]
+  guard_seconds: 2
+  welch:
+    window: hann
+    nperseg: 256
+    noverlap: 128
+    detrend: constant
+    average: mean
+
+maintenance_ra:
+  alpha_band_hz: [8.0, 13.0]
+  delta_band_hz: [1.0, 4.0]
+  relative_total_band_hz: [1.0, 20.0]
+
+analysis:
+  pk_burn_in_after_record_start_minutes: 30
+  minutes_after_anestart: 30
+  minutes_after_opstart: 10
+  minutes_before_opend: 10
+  grid_seconds: 300
+  window_seconds: 30
+  minimum_valid_windows: 8
+  event_map_threshold_mmhg: 65.0
+  event_minimum_low_seconds: 60
+  event_separation_seconds: 900
+  event_maximum_per_surgery: 2
+  event_subwindow_seconds: 30
+  event_interval_valid_fraction_min: 0.50
+  event_interval_valid_fraction_sensitivity: 0.80
+  event_pseudo_exclusion_seconds: 900
+  sample_hz: 128
+  eeg_raw_coverage_min: 0.80
+  sqi_threshold: 80
+  sqi_window_fraction_min: 0.80
+  sr_threshold: 20
+  sr_window_fraction_min: 0.80
+  sr_presence_positive_threshold: 0
+  sr_presence_window_fraction_min: 0.20
+  flatline_difference_absolute_max: 0.000001
+  flatline_fraction_max: 0.05
+  flatline_longest_seconds_max: 1.0
+  saturation_absolute_min: 300.0
+  saturation_fraction_max: 0.0001
+  saturation_longest_seconds_max: 0.01
+  welch_minimum_valid_segments: 23
+  art_valid_range_mmhg: [20.0, 200.0]
+  art_coverage_min: 0.80
+  art_minimum_samples: 12
+  art_max_gap_seconds: 4.5
+  infusion_max_gap_seconds: 5.0
+  propofol_concentration_mg_ml: 20.0
+  remifentanil_concentrations_ug_ml:
+    Orchestra/RFTN20_RATE: 20.0
+    Orchestra/RFTN50_RATE: 50.0
+  marsh_ke0_per_minute: 0.26
+  volatile_positive_thresholds:
+    Primus/EXP_SEVO: 0.1
+    Primus/EXP_DES: 0.5
+    Solar8000/GAS2_EXPIRED: 0.1
+  volatile_zero_tolerances:
+    Primus/EXP_SEVO: 0.01
+    Primus/EXP_DES: 0.01
+    Solar8000/GAS2_EXPIRED: 0.01
+  volatile_valid_range: [0.0, 20.0]
+  volatile_boundary_tolerance_seconds: 120
+  volatile_max_gap_seconds: 120
+
+runtime:
+  workers: 8

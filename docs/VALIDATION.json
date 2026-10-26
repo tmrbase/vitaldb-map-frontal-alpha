@@ -1,0 +1,211 @@
+{
+  "date": "2026-09-30",
+  "scope": "Execution on cached local inputs, not a fresh source-to-result rebuild",
+  "input_source": "Previously generated PhysioNet VitalDB v1.0.0 event outputs",
+  "input_hashes": [
+    {
+      "file": "event_responses.csv",
+      "sha256": "8b3329cf10539d5d92b2cb36da27599646852b92c23cf01c60982e93619f3de4",
+      "cached": true
+    },
+    {
+      "file": "event_intervals.csv",
+      "sha256": "fb6b0816f0f4faf43e0e40b380de58b20b89b22e8c12424e0317262d5c946791",
+      "cached": true
+    },
+    {
+      "file": "event_subwindows.csv",
+      "sha256": "575661ad61df2310acbd1b758ffd03aacd26ac45e0082a0c8fa6008455775cb2",
+      "cached": true
+    },
+    {
+      "file": "r_alpha_nonalpha_decomposition_results.json",
+      "sha256": "4d7a4cfc6d592f7fa664803e88750de1359c5835cccccb78b1ab60bf38f09f71",
+      "cached": true
+    },
+    {
+      "file": "r_alpha_nonalpha_event_results.csv",
+      "sha256": "f1cacf3ed559d96e49bd236e42efbcc99eb82b3b8af0c1caf87af9d8bb1997a2",
+      "cached": true
+    }
+  ],
+  "alpha_joint_tests": {
+    "implementation": {
+      "language": "R version 4.4.1 (2024-06-14 ucrt)",
+      "estimator": "WLS; inverse number of available intervals per event/pair",
+      "preparation": "R/event_components.R shared with 20_alpha_nonalpha_decomposition.R",
+      "covariance": "sandwich::vcovCL, surgery-cluster HC1, cadjust=TRUE",
+      "test": "Unadjusted joint chi-square Wald test of all four interval coefficients",
+      "ci_source": "Unchanged script-20 patient-bootstrap intervals; no CI calculated here"
+    },
+    "event_spectral": {
+      "outcomes": {
+        "absolute_alpha": {
+          "real_event": {
+            "cohort": {
+              "rows": 1359,
+              "events_or_pairs": 414,
+              "surgeries": 323,
+              "subjects": 322
+            },
+            "interval_changes": {
+              "response_0_1": {
+                "estimate": -0.06572412435099963,
+                "standard_error": 0.014435330127202585
+              },
+              "response_1_3": {
+                "estimate": -0.042968813541896814,
+                "standard_error": 0.01279671289488205
+              },
+              "response_3_5": {
+                "estimate": -0.004650624079761948,
+                "standard_error": 0.013362445438841762
+              },
+              "response_5_10": {
+                "estimate": 0.009757030942693184,
+                "standard_error": 0.013913570567948196
+              }
+            },
+            "global_test_all_four_changes_zero": {
+              "chi_square": 27.242594888943536,
+              "degrees_of_freedom": 4,
+              "p_value": 1.7755446401350128e-05
+            },
+            "consistency": {
+              "identical_design_response_weights": true,
+              "maximum_coefficient_difference_from_multi_wls": 0,
+              "maximum_event_total_weight_error": 0,
+              "script20_cohort_match": true,
+              "maximum_difference_from_saved_script20_estimates": 0
+            }
+          },
+          "paired_real_vs_pseudo": {
+            "cohort": {
+              "rows": 938,
+              "events_or_pairs": 302,
+              "surgeries": 251,
+              "subjects": 251
+            },
+            "interval_changes": {
+              "response_0_1": {
+                "estimate": -0.05937562008348007,
+                "standard_error": 0.025163545787311038
+              },
+              "response_1_3": {
+                "estimate": -0.02895888931768443,
+                "standard_error": 0.022861904371157916
+              },
+              "response_3_5": {
+                "estimate": 0.014030945637687293,
+                "standard_error": 0.024430633744919623
+              },
+              "response_5_10": {
+                "estimate": 0.024900516786689815,
+                "standard_error": 0.025486352823419843
+              }
+            },
+            "global_test_all_four_changes_zero": {
+              "chi_square": 9.10089721971584,
+              "degrees_of_freedom": 4,
+              "p_value": 0.05862641859293494
+            },
+            "consistency": {
+              "identical_design_response_weights": true,
+              "maximum_coefficient_difference_from_multi_wls": 0,
+              "maximum_event_total_weight_error": 0,
+              "script20_cohort_match": true,
+              "maximum_difference_from_saved_script20_estimates": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "trimmed_refit": {
+    "subjects": 894,
+    "surgeries": 904,
+    "windows": 20725,
+    "overall_map_p": 2.2505996874628666e-29,
+    "nonlinearity_p": 0.00035674272364319507
+  },
+  "random_slope_diagnostics": {
+    "individual_estimation": {
+      "median_reliability": 0.2881371521457066,
+      "reliability_q25": 0.18244306917341177,
+      "reliability_q75": 0.4502084438702765,
+      "surgeries_reliability_ge_0_50": 174,
+      "surgeries_reliability_ge_0_70": 42
+    },
+    "temporal_reproducibility": {
+      "all_n": 914,
+      "all_spearman": 0.07877577219691523,
+      "map_range_ge_10_n": 787,
+      "map_range_ge_10_spearman": 0.09047341892650601
+    }
+  },
+  "validation_scope": {
+    "python_version": "3.12.11",
+    "r_version": "4.4.1",
+    "component_bootstrap_cis": "Existing cached output; not recomputed in the focused checks",
+    "r_package_warning": "Existing binaries built under R 4.4.3; executed successfully with R 4.4.1"
+  },
+  "not_rerun_in_focused_checks": [
+    "Fresh source download",
+    "Waveform extraction",
+    "Primary MAP-RA models",
+    "Component bootstrap confidence intervals",
+    "Complete source-to-result workflow"
+  ],
+  "snapshot_checks": [
+    {
+      "check": "python_tests",
+      "returncode": 0,
+      "log_sha256": "f035fb0ce863c701ebb82be120e0c0dcd8a13f569e888bfd009d120ee08c6fe1"
+    },
+    {
+      "check": "python_lint",
+      "returncode": 0,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "check": "python_compile",
+      "returncode": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "r_patient_test",
+      "returncode": 0,
+      "log_sha256": "19a65501f9e361303aee603f25358dedf45b11124c1ed010b93e6135196a9c6d"
+    },
+    {
+      "check": "r_joint_test",
+      "returncode": 0,
+      "log_sha256": "7b7bf6e0ec3d1d56ec1964dea5561175221acc9f43f408f62460c9d7b40af594"
+    },
+    {
+      "check": "r_syntax",
+      "returncode": 0,
+      "log_sha256": "774c8a99732877fc39575412f55fca0582fe3ae443e8179a132da887646d5214"
+    },
+    {
+      "check": "alpha_joint_execution",
+      "returncode": 0,
+      "log_sha256": "ee30c8e6b836c446ad11ea83469a13fb782b437932357b14f5ae1e419e210d15"
+    },
+    {
+      "check": "numerical_validation",
+      "returncode": 0,
+      "log_sha256": "8f704d6e90de661c938ae1c47777cd29ed46739a878bcc4413af3f226d1c305f"
+    },
+    {
+      "check": "analysis_dry_run",
+      "returncode": 0,
+      "log_sha256": "548af75781967b49a03ca25432c6e821bff8b780db631eb63a75a8a65844bc69"
+    },
+    {
+      "check": "source_dry_run",
+      "returncode": 0,
+      "log_sha256": "8bf23d301d7dea88fdd1c792a63a1bbf5136888c4e2d9a39d75fadf400441dbd"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+Sys.setenv(
+  RENV_CONFIG_SANDBOX_ENABLED = "FALSE",
+  RENV_CONFIG_CACHE_ENABLED = "FALSE"
+)
+source("renv/activate.R")

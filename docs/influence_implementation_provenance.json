@@ -1,0 +1,45 @@
+{
+  "description": "AST fingerprints of the patient-influence implementation; source positions are excluded.",
+  "functions": [
+    {
+      "name": "Car1Fit",
+      "ast_sha256": "4bd4559aa3c62d4eea6dfcda6068136bb0c121bf02a8d07d7e7ad9f3e3bf9ab0"
+    },
+    {
+      "name": "restricted_cubic_spline_basis",
+      "ast_sha256": "671d0465d0d9da2469c789a17a0125c2ae1669aa781d45e71679184644998d2d"
+    },
+    {
+      "name": "_strict_knots",
+      "ast_sha256": "db7b3aa970715454f88ecdaa5518e435623f15a57c6e11da8d59f4196416b709"
+    },
+    {
+      "name": "_append_standardized",
+      "ast_sha256": "4d9d1b2882e85928e54ec80bc9d7b45612d0c9a7020b9f31440c9f121e50d668"
+    },
+    {
+      "name": "build_main_design",
+      "ast_sha256": "5e6d6e05b8aaf94eb86eec15316fbb32dcb7f23873b81283a435187de11ddcf3"
+    },
+    {
+      "name": "_group_indices",
+      "ast_sha256": "72bd228fb4f117f71a60dbb33d086e46458287f277145040c5a579dc6b9b5063"
+    },
+    {
+      "name": "_fit_for_covariance",
+      "ast_sha256": "0fb2e60cec1746857e19a59414b680b1e13c9985b95b7c992e894110fe3ed29a"
+    },
+    {
+      "name": "fit_car1_random_intercept",
+      "ast_sha256": "3c788d1ee044431291ea4612d72fa8db62972c763cb6349fe54ca23fb9f3d935"
+    },
+    {
+      "name": "map_within_contrast_matrix",
+      "ast_sha256": "2a4588a95f2c531bd90cc9018b3448531bac87cf14407a13aa9e2d567dc65786"
+    },
+    {
+      "name": "_subject_influence",
+      "ast_sha256": "71e93028b6e07688596ee8451234ef639581d36332019dd33aa09e3e9f320d51"
+    }
+  ]
+}

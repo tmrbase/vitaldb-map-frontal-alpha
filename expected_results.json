@@ -1,0 +1,92 @@
+{
+  "release": "Minerva manuscript research release (2026-09-30)",
+  "cohort": {
+    "subjects": 904,
+    "surgeries": 914,
+    "windows": 21192
+  },
+  "selection_flow": {
+    "eligible_surgeries": 1142,
+    "eligible_patients": 1126,
+    "scheduled_windows": 38561,
+    "complete_windows": 22157,
+    "excluded_surgeries": 228
+  },
+  "model": {
+    "case_equal_G": 0.0147321162,
+    "delta_marginal_r2": 0.0016715695,
+    "delta_conditional_r2": 0.000543145
+  },
+  "patient_cluster_CR1S_contrasts_percentage_points": {
+    "60": [
+      -0.3335291,
+      -0.4666998,
+      -0.2003584
+    ],
+    "70": [
+      0.3497945,
+      0.2341258,
+      0.4654633
+    ],
+    "80": [
+      1.1538719,
+      0.9157068,
+      1.392037
+    ]
+  },
+  "final_pre_index_minute": {
+    "map_change_mmhg": -5.3258215962,
+    "ra_change_percentage_points": -0.4393185807
+  },
+  "negative_control": {
+    "estimate_percentage_points": -0.1381152597,
+    "events": 248,
+    "patients": 211
+  },
+  "actual_nonalpha_first_minute_percent_change": {
+    "real_event": [
+      -0.6749781,
+      -2.9728917,
+      1.6856622
+    ],
+    "real_minus_reference": [
+      -0.5122813,
+      -5.1613019,
+      4.7845747
+    ]
+  },
+  "spectral_alpha_same_model": {
+    "real_event": {
+      "cohort": {
+        "rows": 1359,
+        "events_or_pairs": 414,
+        "surgeries": 323,
+        "subjects": 322
+      },
+      "global_p": 1.7755446401350128e-05
+    },
+    "paired_real_vs_pseudo": {
+      "cohort": {
+        "rows": 938,
+        "events_or_pairs": 302,
+        "surgeries": 251,
+        "subjects": 251
+      },
+      "global_p": 0.05862641859293494
+    }
+  },
+  "diagnostics": {
+    "median_reliability": 0.288,
+    "reliability_q25": 0.182,
+    "reliability_q75": 0.45,
+    "all_spearman": 0.079,
+    "map_range_ge_10_spearman": 0.09,
+    "influence_trimmed": {
+      "subjects": 894,
+      "surgeries": 904,
+      "windows": 20725
+    },
+    "influence_trimmed_overall_p_below": 0.001,
+    "influence_trimmed_nonlinearity_p_below": 0.001
+  }
+}

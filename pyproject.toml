@@ -1,0 +1,45 @@
+[project]
+name = "vitaldb-map-ra-analysis"
+version = "2.0.0"
+description = "Reproducible VitalDB analysis of within-surgery MAP and frontal relative alpha power."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "matplotlib>=3.9",
+  "numpy>=2.0,<2.4",
+  "pandas>=2.2",
+  "pyarrow>=17",
+  "pyyaml>=6",
+  "scipy>=1.14",
+  "tqdm>=4.66",
+  "vitaldb>=1.4",
+  "wfdb>=4.3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "ruff>=0.9",
+]
+
+[project.scripts]
+vitaldb-map-alpha = "vitaldb_eeg.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vitaldb_eeg"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint.per-file-ignores]
+# Keep the historical influence functions unchanged, including redundant casts.
+"src/vitaldb_eeg/patient_influence.py" = ["RUF046"]
